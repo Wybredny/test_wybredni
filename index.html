@@ -21,6 +21,34 @@
         width: auto;
         margin: 50px;
       }
+
+      .buttons img {
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+      }
+
+      .like-button {
+        fill: red;
+      }
+
+      .dislike-button {
+        fill: gray;
+      }
+
+      .like-button:hover {
+        fill: pink;
+      }
+
+      .dislike-button:hover {
+        fill: lightgray;
+      }
+
+      .like-counter {
+        font-size: 14px;
+        font-weight: bold;
+        margin-top: 10px;
+      }
     </style>
 
     <link
@@ -60,6 +88,34 @@
           "Najładniejsza dzielnica we Wrocławiu<br> A może w całej Europie."
         )
         .openPopup();
+
+      // add a marker with like and dislike buttons
+      var marker = L.marker([51.1107, 17.0243]).addTo(map);
+
+      var likeCount = 0;
+      var popupContent =
+        '<div class="popup">' +
+        "<p>To prawdopodobnie najpiękniejszy apartament we Wrocławiu.</p>" +
+        '<div class="buttons">' +
+        '<img class="like-button" src="images/Like_button.png">' +
+        '<img class="dislike-button" src="images/Dislike_button.png">' +
+        "</div>" +
+        '<div class="like-counter">0</div>' +
+        "</div>";
+
+      marker.bindPopup(popupContent).openPopup();
+      var likeButton = document.querySelector(".like-button");
+      var dislikeButton = document.querySelector(".dislike-button");
+      var likeCounter = document.querySelector(".like-counter");
+
+      likeButton.addEventListener("click", function () {
+        likeCount++;
+        likeCounter.textContent = likeCount;
+      });
+
+      dislikeButton.addEventListener("click", function () {
+        // Do something when the dislike button is clicked
+      });
     </script>
   </body>
 </html>
