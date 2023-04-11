@@ -48,6 +48,7 @@
         font-size: 14px;
         font-weight: bold;
         margin-top: 10px;
+        margin-left: 10px;
       }
     </style>
 
@@ -107,6 +108,7 @@
       var likeButton = document.querySelector(".like-button");
       var dislikeButton = document.querySelector(".dislike-button");
       var likeCounter = document.querySelector(".like-counter");
+      var dislikeCounter = document.querySelector(".dislike-counter");
 
       likeButton.addEventListener("click", function () {
         likeCount++;
@@ -114,7 +116,8 @@
       });
 
       dislikeButton.addEventListener("click", function () {
-        // Do something when the dislike button is clicked
+        likeCount++;
+        likeCounter.textContent = likeCount;
       });
     </script>
   </body>
